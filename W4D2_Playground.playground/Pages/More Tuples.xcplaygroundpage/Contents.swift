@@ -17,6 +17,15 @@ case (5, 6):
   print("We got 11!")
 case (6, 5):
   print("We got 11!")
+case (_, 1):
+        print("We got 1 on at least one of the dices!")
+case (2, _):
+    print("We got 2 on at least one of the dices!")
+case (1...3, 1...3):
+    print("Both dices range from 1 - 3")
+    
+case (let x, let y) where x == y:
+    print("Both dices are the same value")
 default:
   print("This roll doesn't matter to us")
 }
@@ -24,11 +33,9 @@ default:
 /*:
  - Experiment:
  Use the below switch statement to test the following cases. What do they do? Try changing the value of `diceRoll` to see what happens!
- - case (_, 1)
- - case (2, _)
- - case (1...3, 1...3)
- - case (let x, let y) where x == y
+ 
  */
+
 
 
 /*:
@@ -40,6 +47,28 @@ default:
  - Halloween Day - Oct 31
  - Otherwise, indiciate the given day is not a holiday
  */
+
+
+let monthDay = (12, 25)
+switch monthDay {
+case (12, 25):
+     print("Christmas Day")
+case (1, 1):
+    print("New Years Day")
+case (2, 14):
+    print("Valentine's Day")
+case (10, 31):
+    print("Halloween Day")
+
+
+    
+    
+    
+default:
+    print("Another Boring Day. Not a holiday")
+}
+
+
 
 
 /*:
@@ -55,5 +84,19 @@ default:
  - point is outside the blue outlined box
  */
 
+let points = (0,0)
+switch points {
+case (0, _):
+    print("point is on the x axis")
+case (_, 0):
+    print("point is on the y axis")
+case (-2...2, -2...2):
+    print("point is in Blue box")
+case (let x, let y) where (x > 2 || x < -2) || (y > 2 || y < -2):
+    print("point is outside Blue box")
+
+default:
+    ""
+}
 
 //: [Next](@next)

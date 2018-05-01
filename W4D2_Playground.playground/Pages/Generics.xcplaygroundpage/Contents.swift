@@ -34,6 +34,12 @@ printMyTwoNumbers(num1: "three", num2: "four")
  Now you try! Write a generic function that takes in two parameters and multiply their value together and print the result. (Hint: You might run into an error after finishing. Continue to the next experiment to find out why!)
  */
 
+func multiplyTwoItems<Element: Numeric>(num1:Element, num2:Element) {
+    print("\(num1 * num2)")
+}
+
+
+
 
 /*:
  - Experiment:
@@ -55,10 +61,29 @@ func multiply<Element: Numeric>(num1: Element, num2: Element) {
  - Experiment:
  Write a generic function that takes in two parameters. One parameter is an array of elements, and the other is one element you are trying to find in the array. Return the index where the element exists in the array. ie: Given `[1,5,2,4]` and `'5'`, the returned index is `1`
  */
+
 /*:
  - Note:
  For this experiment, refrain from using the array method `indexOf`. Also the protocol `Equatable` might be useful here. Search it up to see what it's about.
  */
+var index = 0
+func  indexFinder<T:Numeric>(arr:[T], num:T)->(Int) {
+    for element in arr {
+    
+        if element != num {
+        index += 1
+            
+        } else {
+            break
+        }
+       
+    }//for
+
+    
+    return index
+}
+
+indexFinder(arr: [1,2,3,4,5,6,7,8,9], num: 5)
 
 
 
@@ -76,6 +101,31 @@ func multiply<Element: Numeric>(num1: Element, num2: Element) {
  */
 
 
+class Queue<Element> {
+    
+    
+    
+    func enqueue<Element>(givenArray:[Element], person:Element)->([Element]) {
+        var myArray = givenArray
+        
+        myArray.append(person)
+        
+        return myArray
+    }
+    
+    func dequeue<Element>(givenArray:[Element])->([Element]) {
+        var myArray = givenArray
+        
+        myArray.remove(at: 0)
+        
+        return myArray
+    
+    }
+
+}
+
+
+//var queue:[T:Numeric] = []
 
 //: [Next](@next)
 

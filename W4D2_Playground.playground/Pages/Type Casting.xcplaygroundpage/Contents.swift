@@ -29,6 +29,11 @@ let myView: UIView = UIButton()
  Try using the `is` operator on `myView`. Take a look at the evaluation on the right to see what the results are. ie: `myView is UIView`. Try checking if `myView` is any of the following views: `UIButton`, `UITableView`, `UIImageView`
  */
 
+if myView is UIView {
+    print("Yes")
+}
+
+
 
 /*:
  - Experiment:
@@ -45,12 +50,15 @@ let myView: UIView = UIButton()
 
 let myCastedButtonView = myView as? UIButton
 
-
+//let mttb = myView as? UITableView
 /*:
  - Experiment:
  Now that we downcast our `myView` to an actual UIButton, use conditional unwrapping to ensure it is not nil, then try calling the `setTitle` method to ensure it can be called.
  */
 
+if let myButView = myView as? UIButton {
+    myButView.setTitle("Button", for: .selected)
+}
 
 /*:
  - Callout(Challenge):
@@ -68,6 +76,12 @@ view.addSubview(UIButton())
  And we need to find all buttons. Write a function to search for `UIButtons` in this view's `subviews`, and return an array will all the buttons.
  */
 
+var viewArr = view.subviews
+
+if let myButton = viewArr[2] as? UIButton {
+    print("It's a button")
+}
+
 
 /*:
  - Callout(Challenge - Part 1):
@@ -82,16 +96,27 @@ class MediaItem {
 }
 
 class Movie: MediaItem {
+    var director:String
+    init( name:String ,director: String) {
+        self.director = director
+        super.init(name: name)
+        
+    }
 }
 
 class Song: MediaItem {
+    var artist:String
+     init(name:String, artist: String) {
+        self.artist = artist
+       super.init(name: name)
+    }
 }
 
 /*:
  - Callout(Challenge - Part 2):
  Now take the array below of MediaItems and create a for loop on the array that prints out what type of media item it is and print out their properties.
  */
-/*
+
 let library = [
   Movie(name: "Casablanca", director: "Michael Curtiz"),
   Song(name: "Blue Suede Shoes", artist: "Elvis Presley"),
@@ -99,6 +124,28 @@ let library = [
   Song(name: "The One And Only", artist: "Chesney Hawkes"),
   Song(name: "Never Gonna Give You Up", artist: "Rick Astley")
 ]
-*/
+
+for item in library {
+    if let movie = item as? Movie {
+        print("Movie named \(movie.name) by director \(movie.director)")
+    }
+    
+    if let song = item as? Song {
+        print("Song named \(song.name) by artist\(song.artist)")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
 
 //: [Next](@next)

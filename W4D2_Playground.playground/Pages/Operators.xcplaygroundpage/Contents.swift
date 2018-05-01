@@ -34,7 +34,7 @@ let unwrapped: Double = optionalValue!
 
 // Here we define our '+' operator function with a String and Int parameter
 func + (left: String, right: Int) -> String {
-  
+
   return "\(left)\(String(right))"
 }
 
@@ -55,14 +55,14 @@ let combinedValues = "abc" + 123
  - Note:
  Changing the behaviour of existing operators is discouraged in real projects as it can cause confusion.
  */
-extension Int {
-  
-  // Comment this function in to try it!
-  //    static func + (left: Int, right: Int) -> Int{
-  //
-  //        return left - right
-  //    }
-}
+//extension Int {
+//
+//
+//      static func + (left: Int, right: Int) -> Int{
+//
+//          return left - right
+//      }
+//}
 
 
 /*:
@@ -100,6 +100,18 @@ var incrementTwo = incrementOne+++
  When we have percentage values, we tend to convert them into their decimal form before doing any arithmetic to them. Create an operator with the '%' that will be a convenient operator to convert Int values into a usable percentage value. ie: 10% = 0.1
  */
 
+postfix operator %
+postfix func % (number: Int) -> Double {
+    var myDouble = Double(number)
+   myDouble = myDouble/100
+    
+    return myDouble
+}
+
+var myInt = 5
+myInt%
+
+
 
 /*:
  - Callout(Challenge):
@@ -107,6 +119,47 @@ var incrementTwo = incrementOne+++
  
  For example, [1,2] + [3,4] = [4,6]. If the array count size are not the same, then return nil
  */
+
+
+
+     func + (array1:[Int], array2:[Int]) -> [Int]? {
+        var myArray = [Int]()
+        if (array1.count == array2.count) {
+            for number in 0..<array1.count {
+            let myNum = array1[number] + array2[number]
+            myArray.append(myNum)
+                print(myNum)
+            }//for
+            return myArray
+        }
+        else {
+            return nil
+        }
+        
+        
+    }//func
+    
+    
+    
+    
+    
+
+
+var ar1 = [1,2]
+var ar2 = [2,3]
+
+ar1 + ar2
+
+
+
+
+
+
+
+
+
+
+
 
 
 
